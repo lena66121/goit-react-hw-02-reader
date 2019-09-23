@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Publication from '../Publication/Publication';
-import Counter from '../Counter/Counter';
 import Controls from '../Controls/Controls';
 import styles from './Reader.module.css';
 
@@ -12,22 +11,14 @@ export default class Reader extends Component {
 
   handleClick = ({ target }) => {
     if (target.value === 'previous') {
-      this.handlePrev();
+      this.setState(state => ({
+        currentPage: state.currentPage - 1,
+      }));
     } else if (target.value === 'next') {
-      this.handleNext();
+      this.setState(state => ({
+        currentPage: state.currentPage + 1,
+      }));
     }
-  };
-
-  handlePrev = () => {
-    this.setState(state => ({
-      currentPage: state.currentPage - 1,
-    }));
-  };
-
-  handleNext = () => {
-    this.setState(state => ({
-      currentPage: state.currentPage + 1,
-    }));
   };
 
   render() {
@@ -42,7 +33,7 @@ export default class Reader extends Component {
           text={publication[currentPage].text}
           id={publication[currentPage].id}
         />
-        <Counter index={index} />
+        <p className={styles.counter}>{`${index}/12`}</p>
         <Controls onClick={this.handleClick} index={currentPage} />
       </div>
     );
