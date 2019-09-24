@@ -7,18 +7,20 @@ const Controls = ({ onClick, index }) => (
     <button
       type="button"
       value="previous"
+      name="previous"
       className={styles.button}
       onClick={onClick}
-      disabled={index === 0 ? true : ''}
+      disabled={!index}
     >
       Previous
     </button>
     <button
       type="button"
       value="next"
+      name="next"
       className={styles.button}
       onClick={onClick}
-      disabled={index === 11 ? true : ''}
+      disabled={index === 11}
     >
       Next
     </button>

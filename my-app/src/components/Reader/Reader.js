@@ -10,11 +10,12 @@ export default class Reader extends Component {
   };
 
   handleClick = ({ target }) => {
-    if (target.value === 'previous') {
+    const { name } = target;
+    if (name === 'previous') {
       this.setState(state => ({
         currentPage: state.currentPage - 1,
       }));
-    } else if (target.value === 'next') {
+    } else {
       this.setState(state => ({
         currentPage: state.currentPage + 1,
       }));
